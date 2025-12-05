@@ -30,7 +30,6 @@ public class LTEInformation extends CellInformation {
     private int rssnr;
     private int timingAdvance;
     private int dbm;
-    private String mcc;
     public LTEInformation() {
         super();
     }
@@ -55,31 +54,21 @@ public class LTEInformation extends CellInformation {
                            long timestamp){
         super(timestamp,
                 CellType.LTE,
-                "N/A",
+                Arrays.toString(cellIdentityLte.getBands()),
                 cellIdentityLte.getCi(),
+                cellIdentityLte.getMccString(),
                 cellIdentityLte.getMncString(),
                 cellIdentityLte.getPci(),
                 cellIdentityLte.getTac(),
                 cellSignalStrengthLte.getLevel(),
-                "N/A",
+                String.valueOf(cellIdentityLte.getOperatorAlphaLong()),
                 cellSignalStrengthLte.getAsuLevel(),
                 cellInfoLte.isRegistered(),
-                cellInfoLte.getCellConnectionStatus());
-
-        String bands = "N/A";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            bands = Arrays.toString(cellIdentityLte.getBands());
-        }
-        super.setBands(bands);
-        String alphaLong = "N/A";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            alphaLong = String.valueOf(cellIdentityLte.getOperatorAlphaLong());
-        }
-        super.setAlphaLong(alphaLong);
+                cellInfoLte.getCellConnectionStatus()
+        );
 
         this.bandwidth = cellIdentityLte.getBandwidth();
         this.earfcn = cellIdentityLte.getEarfcn();
-        this.mcc = cellIdentityLte.getMccString();
 
         this.cqi = cellSignalStrengthLte.getCqi();
         this.rsrp = cellSignalStrengthLte.getRsrp();
@@ -105,14 +94,6 @@ public class LTEInformation extends CellInformation {
 
     public void setDbm(int dbm) {
         this.dbm = dbm;
-    }
-
-    public String getMcc() {
-        return mcc;
-    }
-
-    public void setMcc(String mcc) {
-        this.mcc = mcc;
     }
 
     public int getBandwidth() {
@@ -227,7 +208,6 @@ public class LTEInformation extends CellInformation {
         point.addField("RSSNR", this.getRssnr());
         point.addField("TimingAdvance", this.getTimingAdvance());
         point.addField("DBM", this.getDbm());
-        point.addField("MCC", this.getMcc());
 
         return point;
     }

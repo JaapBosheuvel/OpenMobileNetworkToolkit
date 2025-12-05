@@ -22,7 +22,6 @@ public class GSMInformation extends CellInformation {
     private int dbm;
     private int rssi;
     private int bsic;
-    private String mcc;
 
     public GSMInformation() {super();}
     public GSMInformation(long timestamp, CellSignalStrengthGsm cellSignalStrengthGsm){
@@ -40,28 +39,22 @@ public class GSMInformation extends CellInformation {
                            long timestamp) {
         super(timestamp,
                 CellType.GSM,
-                "N/A",
+                Integer.toString(cellIdentityGsm.getArfcn()),
                 cellIdentityGsm.getCid(),
+                cellIdentityGsm.getMccString(),
                 cellIdentityGsm.getMncString(),
-                -1,
-                -1,
+                cellIdentityGsm.getBsic(),
+                cellIdentityGsm.getLac(),
                 cellSignalStrengthGsm.getLevel(),
                 cellIdentityGsm.getOperatorAlphaLong().toString(),
                 cellSignalStrengthGsm.getAsuLevel(),
                 cellInfoGsm.isRegistered(),
                 cellInfoGsm.getCellConnectionStatus());
 
-        String band = "N/A";
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            band = Integer.toString(cellIdentityGsm.getArfcn());
-        }
-        super.setBands(band);
-
 
         lac = cellIdentityGsm.getLac();
         bsic = cellIdentityGsm.getBsic();
 
-        mcc = cellIdentityGsm.getMncString();
         timingAdvance = cellSignalStrengthGsm.getTimingAdvance();
         bitErrorRate =  cellSignalStrengthGsm.getBitErrorRate();
         dbm = cellSignalStrengthGsm.getDbm();
@@ -78,14 +71,6 @@ public class GSMInformation extends CellInformation {
 
     public void setBsic(int bsic) {
         this.bsic = bsic;
-    }
-
-    public String getMcc() {
-        return mcc;
-    }
-
-    public void setMcc(String mcc) {
-        this.mcc = mcc;
     }
 
     public int getLac() {
@@ -157,7 +142,6 @@ public class GSMInformation extends CellInformation {
         point.addField("Dbm", dbm);
         point.addField("RSSI", rssi);
         point.addField("BSIC", bsic);
-        point.addField("MCC", mcc);
         return point;
     }
 

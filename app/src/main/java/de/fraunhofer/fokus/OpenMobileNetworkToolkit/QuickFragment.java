@@ -237,8 +237,8 @@ public class QuickFragment extends Fragment {
                         cdma.getTacString(),
                         Integer.MAX_VALUE, -1,
                         Integer.MAX_VALUE, -1);
-                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_mnc),
-                        cdma.getMnc(),
+                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_PLMN),
+                        cdma.getMcc() + cdma.getMnc(),
                         Integer.MAX_VALUE, -1,
                         Integer.MAX_VALUE, -1);
                 modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_cellType),

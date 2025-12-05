@@ -34,7 +34,6 @@ public class NRInformation extends CellInformation {
     private int sssinr;
     private int dbm;
     private int asuLevel;
-    private String mcc;
     private int tac;
     private int timingAdvance;
     private List<Integer> cqis;
@@ -62,29 +61,19 @@ public class NRInformation extends CellInformation {
                           CellSignalStrengthNr cellSignalStrengthNr, long timestamp){
         super(timestamp,
                 CellType.NR,
-                "N/A",
+                Arrays.toString(cellIdentityNr.getBands()),
                 cellIdentityNr.getNci(),
+                cellIdentityNr.getMccString(),
                 cellIdentityNr.getMncString(),
                 cellIdentityNr.getPci(),
                 cellIdentityNr.getTac(),
                 cellSignalStrengthNr.getLevel(),
-                "N/A",
+                String.valueOf(cellIdentityNr.getOperatorAlphaLong()),
                 cellSignalStrengthNr.getAsuLevel(),
                 cellInfoNr.isRegistered(),
                 cellInfoNr.getCellConnectionStatus());
-        String bands = "N/A";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            bands = Arrays.toString(cellIdentityNr.getBands());
-        }
-        super.setBands(bands);
-        String alphaLong = "N/A";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            alphaLong = String.valueOf(cellIdentityNr.getOperatorAlphaLong());
-        }
-        super.setAlphaLong(alphaLong);
 
         this.nrarfcn = cellIdentityNr.getNrarfcn();
-        this.mcc = cellIdentityNr.getMccString();
         this.asuLevel = cellSignalStrengthNr.getAsuLevel();
         this.dbm = cellSignalStrengthNr.getDbm();
         this.csirsrp = cellSignalStrengthNr.getCsiRsrp();
@@ -110,14 +99,6 @@ public class NRInformation extends CellInformation {
 
     public void setNrarfcn(int nrarfcn) {
         this.nrarfcn = nrarfcn;
-    }
-
-    public String getMcc() {
-        return mcc;
-    }
-
-    public void setMcc(String mcc) {
-        this.mcc = mcc;
     }
 
     public int getAsuLevel() {
@@ -268,15 +249,10 @@ public class NRInformation extends CellInformation {
         return this.getMcc() + this.getMnc();
     }
 
-    public String getMccString() {
-        return this.mcc;
-    }
-
     @Override
     public Point getPoint(Point point){
         super.getPoint(point);
         point.addField("NRARFCN", this.getNrarfcn());
-        point.addField("MCC", this.getMcc());
         point.addField("Lac", this.getTac());
         point.addField("DBM", this.getDbm());
         point.addField(GlobalVars.CSIRSRP, this.getCsirsrp());

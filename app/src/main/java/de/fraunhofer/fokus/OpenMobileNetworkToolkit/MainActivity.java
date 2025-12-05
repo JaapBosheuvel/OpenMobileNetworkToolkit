@@ -641,6 +641,9 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
             telephonyManager.requestCellInfoUpdate(new DirectExecutor(), new TelephonyManager.CellInfoCallback() {
                 @Override
                 public void onCellInfo(@NonNull List<CellInfo> list) {
+                    for (CellInfo info : list) {
+                        Log.d("OMNT", "onCellInfo[" + subId + "]: CellInfo=" + info);
+                    }
                     cellInfoBySubId.put(subId, list);
 
                     if (completedRequests.incrementAndGet() == totalManagers) {

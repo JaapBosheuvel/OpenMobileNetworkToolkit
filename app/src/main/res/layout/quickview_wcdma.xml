@@ -32,18 +32,18 @@
                         </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <!--MNC-->
+                <!--PLMN-->
                 <androidx.cardview.widget.CardView
                     style="@style/quickViewChildCardViewStyle">
                     <LinearLayout
                         style="@style/quickViewChildCardViewLL">
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewTitle"
-                            android:text="@string/mnc">
+                            android:text="@string/plmn">
                         </com.google.android.material.textview.MaterialTextView>
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewValue"
-                            android:id="@+id/quickview_wcdma_mnc"
+                            android:id="@+id/quickview_wcdma_PLMN"
                             android:text="@string/na">
                         </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>

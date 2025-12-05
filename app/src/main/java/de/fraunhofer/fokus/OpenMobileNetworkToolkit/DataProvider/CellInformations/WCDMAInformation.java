@@ -22,10 +22,6 @@ public class WCDMAInformation extends CellInformation {
     private int Level;
     private int AsuLevel;
 
-    public WCDMAInformation() {
-        super();
-    }
-
     public WCDMAInformation(long timestamp, CellSignalStrengthWcdma cellSignalStrengthWcdma) {
         super(timestamp);
         Dbm = cellSignalStrengthWcdma.getDbm();
@@ -37,7 +33,21 @@ public class WCDMAInformation extends CellInformation {
     }
 
     private WCDMAInformation(CellInfoWcdma cellInfoWcdma, CellIdentityWcdma cellIdentityWcdma, CellSignalStrengthWcdma cellSignalStrengthWcdma, long timestamp) {
-        super(timestamp, CellType.WCDMA, "N/A", -1, "N/A", -1, -1, cellSignalStrengthWcdma.getLevel(), Objects.requireNonNull(cellIdentityWcdma.getOperatorAlphaLong()).toString(), cellSignalStrengthWcdma.getAsuLevel(), cellInfoWcdma.isRegistered(), cellInfoWcdma.getCellConnectionStatus());
+        super(
+                timestamp,
+                CellType.WCDMA,
+                String.valueOf(cellIdentityWcdma.getUarfcn()),
+                cellIdentityWcdma.getCid(),
+                cellIdentityWcdma.getMccString(),
+                cellIdentityWcdma.getMncString(),
+                cellIdentityWcdma.getPsc(),
+                cellIdentityWcdma.getLac(),
+                cellSignalStrengthWcdma.getLevel(),
+                Objects.requireNonNull(cellIdentityWcdma.getOperatorAlphaLong()).toString(),
+                cellSignalStrengthWcdma.getAsuLevel(),
+                cellInfoWcdma.isRegistered(),
+                cellInfoWcdma.getCellConnectionStatus()
+        );
         Dbm = cellSignalStrengthWcdma.getDbm();
         EcNo = cellSignalStrengthWcdma.getEcNo();
         Level = cellSignalStrengthWcdma.getLevel();

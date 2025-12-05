@@ -15,6 +15,8 @@ import android.os.Build;
 import android.telephony.CellInfo;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.influxdb.client.write.Point;
 
 import de.fraunhofer.fokus.OpenMobileNetworkToolkit.DataProvider.Information;
@@ -25,6 +27,7 @@ public class CellInformation extends Information {
     private String alphaLong;
     private String bands;
     private long ci;
+    private String mcc;
     private String mnc;
     private int pci;
     private int tac;
@@ -61,6 +64,7 @@ public class CellInformation extends Information {
                            CellType cellType,
                            String bands,
                            long ci,
+                           String mcc,
                            String mnc,
                            int pci,
                            int tac,
@@ -73,6 +77,7 @@ public class CellInformation extends Information {
         this.cellType = cellType;
         this.bands = bands;
         this.ci = ci;
+        this.mcc = mcc;
         this.mnc = mnc;
         this.pci = pci;
         this.tac = tac;
@@ -149,6 +154,14 @@ public class CellInformation extends Information {
         this.ci = ci;
     }
 
+    public String getMcc() {
+        return mcc;
+    }
+
+    public void setMcc(String mcc) {
+        this.mcc = mcc;
+    }
+
     public String getMnc() {
         return mnc;
     }
@@ -191,13 +204,11 @@ public class CellInformation extends Information {
             point = Point.measurement("CellInformation");
         }
         point.addField("CellType", cellType.toString());
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            point.addField("Bands", this.getBands());
-        }
-        long ci = this.getCi();
+        point.addField("Bands", this.getBands());
         if (ci != CellInfo.UNAVAILABLE) {
             point.addTag("CI", String.valueOf(ci));
         }
+        point.addField("MCC", this.getMcc());
         point.addField("MNC", this.getMnc());
         if(this.getPci() != -1) point.addField("PCI", this.getPci());
         point.addField("TAC", this.getTac());
@@ -218,5 +229,22 @@ public class CellInformation extends Information {
         }
         return stringBuilder;
     }
-
+    @NonNull
+    @Override
+    public String toString() {
+        return "CellInformation{" +
+                "cellType=" + cellType +
+                ", alphaLong='" + alphaLong + '\'' +
+                ", bands='" + bands + '\'' +
+                ", ci=" + ci +
+                ", mnc='" + mnc + '\'' +
+                ", mnc='" + mnc + '\'' +
+                ", pci=" + pci +
+                ", tac=" + tac +
+                ", level=" + level +
+                ", asuLevel=" + asuLevel +
+                ", isRegistered=" + isRegistered +
+                ", cellConnectionStatus=" + cellConnectionStatus +
+                '}';
+    }
 }
