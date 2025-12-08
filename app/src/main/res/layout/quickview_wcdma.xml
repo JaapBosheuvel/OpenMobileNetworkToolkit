@@ -109,11 +109,11 @@
                         style="@style/quickViewChildCardViewLL">
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewTitle"
-                            android:text="@string/wcmdaDbm">
+                            android:text="@string/wcmdaRssi">
                         </com.google.android.material.textview.MaterialTextView>
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewValue"
-                            android:id="@+id/quickview_wcdma_dbm"
+                            android:id="@+id/quickview_wcdma_rssi"
                             android:text="@string/na">
                         </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>
@@ -141,11 +141,11 @@
                         style="@style/quickViewChildCardViewLL">
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewTitle"
-                            android:text="@string/wcdmaLevel">
+                            android:text="@string/wcmdaRscp">
                         </com.google.android.material.textview.MaterialTextView>
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewValue"
-                            android:id="@+id/quickview_wcdma_level"
+                            android:id="@+id/quickview_wcdma_rscp"
                             android:text="@string/na">
                         </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>
@@ -161,7 +161,7 @@
                         </com.google.android.material.textview.MaterialTextView>
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/quickViewTextViewValue"
-                            android:id="@+id/quickview_wcdma_asu_level"
+                            android:id="@+id/quickview_wcdma_ber"
                             android:text="@string/na">
                         </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>

@@ -137,8 +137,10 @@
 
     <!-- CellInformation -->
     <string name="bsic">BSIC</string>
-    <string name="wcmdaDbm">WCMDA dBm</string>
-    <string name="wcmdaEcNo">WCMDA EcNo</string>
+    <string name="wcmdaRssi">RSSI</string>
+    <string name="wcmdaRscp">RSCP</string>
+    <string name="wcmdaEcNo">EcNo</string>
+    <string name="wcmdaBer">Ber</string>
     <string name="cellType">Type</string>
     <string name="alphaLong">Alpha Long</string>
     <string name="bands">Bands</string>

@@ -250,22 +250,22 @@ public class QuickFragment extends Fragment {
                         Integer.MAX_VALUE, -1,
                         Integer.MAX_VALUE, -1);
 
-                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_dbm),
-                        cdma.getCmdaDbmString(),
-                        -120, R.color.radio_red,
-                        -70, R.color.radio_green);
+                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_rssi),
+                        cdma.getRssiString(),
+                        -113, R.color.radio_red,
+                        -51, R.color.radio_green);
                 modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_EcNo),
-                        cdma.getCmdaEcnoString(),
-                        0, R.color.radio_green,
-                        20, R.color.radio_red);
-                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_level),
-                        cdma.getLevelString(),
+                        cdma.getEcnoString(),
+                        1, R.color.radio_green,
+                        -24, R.color.radio_red);
+                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_rscp),
+                        cdma.getRscpString(),
                         -120, R.color.radio_red,
-                        -70, R.color.radio_green);
-                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_asu_level),
-                        cdma.getAsuLevelString(),
+                        -24, R.color.radio_green);
+                modifyTextView(wcdmaLL.findViewById(R.id.quickview_wcdma_ber),
+                        cdma.getBerString(),
                         0, R.color.radio_red,
-                        20, R.color.radio_green);
+                        7, R.color.radio_green);
                 mainLL.addView(wcdmaView);
                 break;
             case UMTS:

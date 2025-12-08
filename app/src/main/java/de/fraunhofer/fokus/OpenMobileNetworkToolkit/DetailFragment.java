@@ -325,7 +325,7 @@ public class DetailFragment extends Fragment {
                 addLevelBar(tl,mapThresholdToInt(gv.WCDMA_ECNO_Threasholds, wcdma.getEcNo()));
                 addRows(tl, new String[][]{{getString(R.string.alphaLong), String.valueOf(wcdma.getAlphaLong())}, {getString(R.string.cellType), String.valueOf(wcdma.getCellType())}, {getString(R.string.isRegistered), String.valueOf(wcdma.isRegistered())}, {getString(R.string.cellConnectionStatus), String.valueOf(wcdma.getCellConnectionStatus())},}, displayNull);
                 addDivider(tl);
-                addRows(tl, new String[][]{{getString(R.string.wcmdaDbm), String.valueOf(wcdma.getDbm())}, {getString(R.string.wcmdaEcNo), String.valueOf(wcdma.getEcNo())}, {getString(R.string.wcdmaLevel), String.valueOf(wcdma.getLevel())}, {getString(R.string.wcmdaAsuLevel), String.valueOf(wcdma.getAsuLevel())},}, displayNull);
+                addRows(tl, new String[][]{{getString(R.string.wcmdaRssi), String.valueOf(wcdma.getRssi())}, {getString(R.string.wcmdaRscp), String.valueOf(wcdma.getRscp())}, {getString(R.string.wcmdaEcNo), String.valueOf(wcdma.getEcNo())}, {getString(R.string.wcmdaBer), String.valueOf(wcdma.getBer())},}, displayNull);
                 break;
             case UNKNOWN:
             default:
